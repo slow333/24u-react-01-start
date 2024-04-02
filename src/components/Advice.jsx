@@ -7,6 +7,7 @@ const Container = styled.div`
   padding: 4rem;
   gap: 4rem;
 `
+// noinspection CssUnresolvedCustomProperty
 const Button = styled.button`
   background-color: grey;
   color: var(--color-brand-50);
