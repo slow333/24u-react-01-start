@@ -3,10 +3,12 @@ import styled from "styled-components";
 import { HiHome,HiDocumentPlus  } from "react-icons/hi2";
 
 const NavContainer = styled.ul`
-   display: flex;
+   grid-row: 1/-1;
+  display: flex;
+  flex-direction: column;
    gap: 3rem;
    background-color: var(--color-grey-100);
-   padding: 1rem 2rem;
+   padding: 7rem 1rem 0;
    font-weight: 600;
 `;
 
@@ -27,6 +29,7 @@ function MainNav() {
     <NavContainer>
       <li><NavItem to='/'><HiHome/>Home</NavItem></li>
       <li><NavItem to='advice'><HiDocumentPlus/>advice</NavItem></li>
+      <li><NavItem to='faraway'><HiDocumentPlus/>FarAway</NavItem></li>
     </NavContainer>
   );
 }

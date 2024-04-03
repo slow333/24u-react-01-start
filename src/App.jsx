@@ -4,6 +4,7 @@ import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 import AppLayout from "./pages/AppLayout.jsx";
 import Home from "./pages/Home.jsx";
 import PageNotFound from "./components/PageNotFound.jsx";
+import FarAway from "./pages/FarAway.jsx";
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
             <Route index element={<Navigate replace to='home'/>}/>
             <Route path='home' element={<Home/>}/>
             <Route path='advice' element={<Advice/>}/>
+            <Route path='faraway' element={<FarAway/>}/>
             <Route path='*' element={<PageNotFound/>}/>
           </Route>
         </Routes>
