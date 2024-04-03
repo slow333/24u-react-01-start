@@ -1,34 +1,42 @@
-import { Outlet} from "react-router-dom";
-import MainNav from "./MainNav.jsx";
+import {Outlet} from "react-router-dom";
 import styled from "styled-components";
+import Header from "../ui/Header.jsx";
+import SideBar from "../ui/SideBar.jsx";
 
-const Layout = styled.div`
-  display: grid;
-  grid-template-columns: 20rem auto;
-  grid-template-rows: auto 1fr;
-`
+const StyledAppLayout = styled.div`
+   display: grid;
+   grid-template-columns: 20rem 1fr;
+   grid-template-rows: auto 1fr;
+   height: 100vh;
+   overflow: hidden;
+`;
 
 const Main = styled.main`
-  &::before,
-  &::after {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+   background-color: var(--color-grey-50);
+   padding: 0;
+   //overflow-y: scroll;
+`;
 
-    /* Creating animations for dark mode */
-    transition: background-color 0.3s, border 0.3s;
-  }
-   margin: 3rem;
-`
+const Container = styled.div`
+   max-width: 100rem;
+   margin: 0 auto;
+   display: flex;
+   flex-direction: column;
+   //gap: 3.2rem;
+   height: 100%;
+`;
 
 const AppLayout = () => {
   return (
-    <Layout>
-      <MainNav/>
+    <StyledAppLayout>
+      <SideBar/>
+      <Header>Far Away</Header>
       <Main>
-        <Outlet/>
+        <Container>
+          <Outlet/>
+        </Container>
       </Main>
-    </Layout>
+    </StyledAppLayout>
   );
 };
 
