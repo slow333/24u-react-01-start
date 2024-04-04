@@ -1,40 +1,19 @@
-import React, {useState} from 'react';
+import React from 'react';
 import FormItems from "../components/far-away/FormItems.jsx";
-import Todo from "../components/far-away/Todo.jsx";
-import styled from "styled-components";
-import Footer from "../components/far-away/Footer.jsx";
-
-const TodosContainer = styled.div`
-   display: flex;
-   flex-wrap: wrap;
-   align-items: start;
-   align-content: start;
-   //justify-content: flex-start;
-   //justify-items: start;
-   gap: 1.2rem;
-   padding: 2rem 3rem;
-   background-color: var(--color-grey-200);
-   //height: 100%;
-   flex-grow: 1;
-`;
+import {FarawayProvider} from "../context/FarawayContext.jsx";
+import ItemList from "../components/far-away/ItemList.jsx";
+import Header from "../ui/Header.jsx";
 
 const FarAway = () => {
-  const [todos, setTodos] = useState([])
 
-  console.log(todos)
   return (
-    <>
-      <FormItems setTodos={setTodos} todos={todos}/>
-      {todos.length > 0 &&
-        <>
-          <TodosContainer>
-            {todos.map((item) =>
-              <Todo key={item.id} todos={todos} item={item} setTodos={setTodos}/>)}
-          </TodosContainer>
-          <Footer todos={todos} setTodos={setTodos}/>
-        </>
-      }
-    </>
+     <>
+       <FarawayProvider>
+         <Header  family='bungee' weight='600'>Far Away</Header>
+         <FormItems />
+         <ItemList />
+       </FarawayProvider>
+     </>
   );
 };
 

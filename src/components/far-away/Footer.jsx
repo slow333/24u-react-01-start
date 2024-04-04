@@ -1,29 +1,26 @@
-import styled from "styled-components";
 import Button from "../../ui/Button.jsx";
+import {useFaraway} from "../../context/FarawayContext.jsx";
+import StyledFooter from "../../ui/StyledFooter.jsx";
 
-const StyledFooter = styled.footer`
-   display: flex;
-   font-size: 1.8rem;   
-   justify-content: space-between;
-   background-color: #1f2937;
-   color: white;
-   padding: 1rem;
-`;
 
-const Footer = ({todos, setTodos}) => {
+const Footer = () => {
+
+  const {todos, dispatch} = useFaraway();
+
   const total = todos.length;
   const doneTodos = todos.map(todo => todo.checked)
     .filter(todo => todo === true).length
-  const percentage = (doneTodos/total)*100;
+  const percentage = ((doneTodos/total)*100).toFixed(2);
 
-  function clearTodos() {
-    setTodos(null)
+  function handleClear(e) {
+    e.preventDefault();
+    dispatch({type:'resetTodos'})
   }
   return (
     <StyledFooter>
       <div>준비한 것 /전체 개수 : {doneTodos}/{total}</div>
       <div>준비 완료: {percentage}% </div>
-      <Button onClick={clearTodos}>떠나요.</Button>
+      <Button onClick={handleClear}>{percentage === '100.00' ? "떠나요.": '...준비중'}</Button>
     </StyledFooter>
   );
 };

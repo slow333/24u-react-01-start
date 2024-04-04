@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import {useState} from "react";
-import {useFaraway} from "../../context/FarawayContext.jsx";
 
 const StyledTodo = styled.div`
    display: flex;
@@ -16,9 +15,7 @@ const StyledTodo = styled.div`
    font-size: 1.8rem;
 `;
 
-const Todo = ({item}) => {
-
-  const{todos, dispatch} = useFaraway();
+const Todo = ({item, todos, setTodos}) => {
 
   const [checked, setChecked] = useState(
     todos.find(todo => todo.id === item.id).checked
@@ -28,13 +25,15 @@ const Todo = ({item}) => {
 
   function handleCheck(id) {
     setChecked(checked => !checked);
-    dispatch({type:'setCheck', payload: id })
+    setTodos(todos => todos.map(todo => {
+      return todo.id === id ? {...todo, checked: !todo.checked} : todo;
+    }))
   }
 
   return (
     <StyledTodo>
       <div className={`${isChecked ? 'italic line-through' : ''}`}>
-      {item.num} : {item.item}
+      {item.num} : {item.todo}
       </div>
       <input type='checkbox' checked={checked}
              onChange={() => handleCheck(item.id)}/>

@@ -1,22 +1,18 @@
 import styled from "styled-components";
+import {fontFamily, weight} from "./fonts.js";
 
-const StyledHeader = styled.header`
-   display: flex;
+const Header = styled.header`
+  ${props => fontFamily[props.family]}
+  ${props => weight[props.weight]}
+  
+  width: 100%;
+  
    background-color: var(--color-grey-900);
-   color: #9ca3af;
-   font-weight: 600;
-   padding: 2.2rem 0;
+   color: #9ca3af;  
+   padding: 1.6rem 0;
    text-align: center;
-   justify-content: center;
-   font-size: 2.6rem;
+   font-size: 4rem;
    text-transform: uppercase;
 `;
-const Header = ({children}) => {
-  return (
-    <StyledHeader>
-      {children}
-    </StyledHeader>
-  );
-};
 
 export default Header;

@@ -1,7 +1,6 @@
-import tw from "tailwind-styled-components";
 import styled from "styled-components";
 
-const StyledButton = styled.button`
+const Button = styled.button`
    color: var(--color-grey-200);
    font-size: 2rem;
    border: 2px solid var(--color-grey-400);
@@ -14,12 +13,5 @@ const StyledButton = styled.button`
    }
 `;
 
-const Button = ({children}) => {
-  return (
-    <StyledButton>
-      {children}
-    </StyledButton>
-  );
-};
 
 export default Button;

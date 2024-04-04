@@ -9,7 +9,10 @@ const StyledSideBar = styled.aside`
    display: flex;
    flex-direction: column;
    gap: 3.2rem;
-`
+  font-family: "Sono", sans-serif;
+  font-weight: bold;
+  letter-spacing: .1rem;
+`;
 
 function SideBar() {
   return (

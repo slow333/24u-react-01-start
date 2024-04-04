@@ -1,12 +1,5 @@
-import {HiDocumentPlus, HiHome} from "react-icons/hi2";
 import styled from "styled-components";
 import {NavLink} from "react-router-dom";
-
-const NavList = styled.ul`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-`;
 
 const StyledNavLink = styled(NavLink)`
   &:link,
@@ -48,15 +41,4 @@ const StyledNavLink = styled(NavLink)`
     transition: all 0.4s;
   }
 `;
-
-const MainNav = () => {
-  return (
-    <NavList>
-      <li><StyledNavLink to='/'><HiHome/>Home</StyledNavLink></li>
-      <li><StyledNavLink to='advice'><HiDocumentPlus/>advice</StyledNavLink></li>
-      <li><StyledNavLink to='faraway'><HiDocumentPlus/>FarAway</StyledNavLink></li>
-    </NavList>
-  );
-};
-
-export default MainNav;
+export default StyledNavLink;

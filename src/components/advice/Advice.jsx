@@ -1,13 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
+import Header from "../../ui/Header.jsx";
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 4rem;
-  gap: 4rem;
-`
-// noinspection CssUnresolvedCustomProperty
 const Button = styled.button`
   background-color: grey;
   color: var(--color-brand-50);
@@ -34,11 +28,12 @@ const Advice = () => {
   }, []);
 
   return (
-       <Container>
+       <>
+         <Header family='notoSanKr' weight='900'>Advices</Header>
          <h1>{advice}</h1>
          <h3>you got {count} advices</h3>
          <Button onClick={getAdvice}>get advice</Button>
-       </Container>
+       </>
   );
 };
 

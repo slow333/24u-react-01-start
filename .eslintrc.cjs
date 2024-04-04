@@ -19,5 +19,6 @@ module.exports = {
     ],
     'no-unused-vars': 'off',
     "@typescript-eslint/ban-ts-ignore": "off",
+    "react/prop-types": 0,
   },
 }
