@@ -1,16 +1,9 @@
 import React, {useState} from 'react';
 import {getBook, getBooks} from "../data/bookData.js";
-import Header from "../ui/Header.jsx";
+import Header from "../main/Header.jsx";
 import styled from "styled-components";
-import Container from "../ui/Container.jsx";
 import Title from "../ui/Title.jsx";
 
-const BookLayout = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 11rem;
-
-`
 const BookContainer = styled.div`
   padding: 2rem;
   border: 2px solid var(--color-grey-500);
@@ -28,11 +21,11 @@ const JsReviewsBooks = () => {
 
   return (
        <>
-           <Header>Book Data</Header>
+           <Header  fontFamily='roboto' weight='600'>Book Data</Header>
            <div>
              <Title>책 고르기</Title>
              <div>{books.reduce((acc, book) => acc + book.pages, 0)} 페이지 by reduce</div>
-             <select onChange={handleChange}>
+             <select onChange={handleChange} className='text-stone-600'>
                <option value=''>book id</option>
                {Array.from({length:5},(_, idx) =>
                     <option key={idx+1} value={idx+1}>{idx+1}</option>)}

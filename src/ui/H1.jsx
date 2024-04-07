@@ -2,8 +2,8 @@ import tw from "tailwind-styled-components";
 
 const H1 = tw.div`
   text-5xl 
-  text-red-500
-  font-bold opacity-40
+  text-grey-200
+  font-bold opacity-80
   mb-10 font-['Roboto]
 `;
 export default H1;

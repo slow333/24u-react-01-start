@@ -77,7 +77,7 @@ const GlobalStyles = createGlobalStyle`
 
    body {
       font-family: "Poppins", sans-serif;
-      color: var(--color-grey-700);
+      color: var(--color-grey-100);
 
       transition: color 0.3s, background-color 0.3s;
       min-height: 100vh;

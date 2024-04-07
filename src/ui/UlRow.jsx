@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 const UlRow = styled.ul`
   position: relative;
-  margin-top: 9rem;
    display: flex;
    justify-content: center;
    align-items: center;

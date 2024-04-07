@@ -1,13 +1,13 @@
-import {css} from "styled-components";
+import styled, {css} from "styled-components";
 
-export const fontFamily = {
+const fontFamily = {
   roboto : css`
     font-family: "Roboto",sans-serif;
   `,
   bungee: css`
     font-family: "Bungee Spice", sans-serif;
   `,
-  notoSanKr: css`
+  noto: css`
     font-family: "noto san KR", sans-serif;
   `,
   poppins: css`
@@ -15,7 +15,7 @@ export const fontFamily = {
   `
 };
 
-export const weight = {
+const weight = {
   100: css`
     font-weight: 100;
   `,
@@ -44,3 +44,19 @@ export const weight = {
     font-weight: 900;
   `,
 }
+
+const Header = styled.header`
+  ${props => fontFamily[props.fontFamily]}
+  ${props => weight[props.weight]}
+  
+  width: 100%;
+  
+   background-color: var(--color-grey-900);
+   color: #9ca3af;  
+   padding: 1.6rem 0;
+   text-align: center;
+   font-size: 4rem;
+   text-transform: uppercase;
+`;
+
+export default Header;

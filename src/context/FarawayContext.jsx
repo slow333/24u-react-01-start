@@ -3,35 +3,49 @@ import {v4 as uuidv4} from "uuid";
 
 const FarawayContext = createContext()
 
-const initialState = {
-  todos:[], todo:{num:0, id:'', item: '', checked: false}
-}
+const initialState = { todos:[], sortedTodos:[] }
+
 function reducer(state, action){
   switch (action.type) {
     case 'addTodos':
       return {
         ...state,
-        todos: [...state.todos, {...action.payload, id:uuidv4() }] }
+        todos: [...state.todos, {...action.payload, id:uuidv4() }],
+        sortedTodos: [...state.todos],
+      }
+    case 'deleteTodo':
+      return {
+        ...state,
+        todos: state.todos.filter(todo => todo.id !== action.payload)
+      }
     case 'setTodos':
       return {
         ...state,
-        todos: action.payload }
-    case 'setItem':
-      return {
-        ...state,
-        todo: {...state.todo, item: action.payload }
-    }
-    case 'setNum':
-      return {
-        ...state,
-        todo: {...state.todo, num: action.payload }
+        todos: action.payload,
+        sortedTodos: state.todos,
       }
-    case 'setCheck' :
+    case 'toggleCheck' :
       return {
         ...state,
         todos: state.todos.map(todo => {
           return todo.id === action.payload ? {...todo, checked: !todo.checked} : todo;
-        })
+        }),
+        sortedTodos: [...state.todos]
+      }
+    case "sort":
+      return {
+        ...state,
+        sortedTodos: state.sortBy === 'num'
+          ? state.todos.slice().
+            sort((a, b) => a.num - b.num)
+          : state.sortBy === 'item'
+              ? state.todos.slice().sort((a, b) => a.item.localeCompare(b.item))
+              : state.todos
+      }
+    case "setSortBy":
+      return {
+        ...state,
+        sortBy: action.payload,
       }
     case 'resetTodos':
       localStorage.setItem('travel', '')
@@ -47,11 +61,11 @@ function reducer(state, action){
 function FarawayProvider({children}) {
 
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { todo, todos } = state;
+  const { todos, sortedTodos } = state;
 
   return (
        <FarawayContext.Provider value={{
-         todo, todos, dispatch
+         todos, dispatch, sortedTodos
        }}>
          {children}
        </FarawayContext.Provider>

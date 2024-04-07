@@ -1,35 +1,31 @@
 import tw from "tailwind-styled-components";
-import H1 from "../ui/H1.jsx";
+import Header from "../main/Header.jsx";
+import styled from "styled-components";
+import ContentFrame from "../main/ContentFrame.jsx";
+import getHome from "../data/homeData.js";
 
-const H2 = tw.div`
-  text-3xl 
-  text-amber-600 
-  mb-6 mt-8
-  pt-12
-  border-t-4 border-gray-600/50
-  `;
-
-const Container = tw.ul`
-  flex flex-col mt-9 border-t-2 pt-4 gap-6 ps-5 text-3xl  border-amber-500
+const Ul = styled.ul`
+   display: flex;
+   flex-direction: column;
+   justify-items: start;
+   font-size: 1.6rem;
+   width: 100%;
 `
-const BodyText = tw.li`
-   font-bold 
+const Li = tw.li`
+   list-disc text-3xl ms-8 mt-3 text-start
 `
 const Home = () => {
+  const data = getHome();
+
   return (
-       <>
-         <H1>Main techs</H1>
-         <Container>
-           <BodyText> react-router-dom</BodyText>
-           <BodyText> styled components</BodyText>
-           <BodyText> react async function</BodyText>
-         </Container>
-         <H2>Memo</H2>
-         <Container>
-           <BodyText>tailwind와 styled-components를 동시에 사용</BodyText>
-           <BodyText>설정을 하기 했는데 다른데서는 잘안됨</BodyText>
-         </Container>
-       </>
+    <>
+      <Header  fontFamily='roboto' weight='600'>Main techs</Header>
+      <ContentFrame>
+        <Ul>
+          {data.map(d => <Li>{d.content}</Li>)}
+        </Ul>
+      </ContentFrame>
+    </>
   );
 };
 

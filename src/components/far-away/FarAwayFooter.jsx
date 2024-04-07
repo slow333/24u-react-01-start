@@ -1,9 +1,8 @@
 import Button from "../../ui/Button.jsx";
 import {useFaraway} from "../../context/FarawayContext.jsx";
-import StyledFooter from "../../ui/StyledFooter.jsx";
+import Footer from "../../main/Footer.js";
 
-
-const Footer = () => {
+const FarAwayFooter = () => {
 
   const {todos, dispatch} = useFaraway();
 
@@ -17,12 +16,12 @@ const Footer = () => {
     dispatch({type:'resetTodos'})
   }
   return (
-    <StyledFooter>
+    <Footer>
       <div>준비한 것 /전체 개수 : {doneTodos}/{total}</div>
       <div>준비 완료: {percentage}% </div>
       <Button onClick={handleClear}>{percentage === '100.00' ? "떠나요.": '...준비중'}</Button>
-    </StyledFooter>
+    </Footer>
   );
 };
 
-export default Footer;
+export default FarAwayFooter;
